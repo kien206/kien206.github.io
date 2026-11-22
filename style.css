@@ -1,0 +1,318 @@
+:root {
+  --bg: #fcfcfa;
+  --text: #1f2328;
+  --muted: #5d6470;
+  --rule: #e4e4df;
+  --accent: #1d4e89;
+  --accent-soft: #eaf1fa;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Dark palette: used when the visitor picks dark, or when they haven't
+   picked and their system is set to dark. */
+:root[data-theme="dark"] {
+  --bg: #15171a;
+  --text: #e6e6e3;
+  --muted: #9aa0a8;
+  --rule: #2c2f34;
+  --accent: #8ab4f0;
+  --accent-soft: #1d2a3a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171a;
+    --text: #e6e6e3;
+    --muted: #9aa0a8;
+    --rule: #2c2f34;
+    --accent: #8ab4f0;
+    --accent-soft: #1d2a3a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover { border-bottom-color: currentColor; }
+
+/* ---------- Header ---------- */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.photo {
+  position: relative;
+  flex: 0 0 128px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+}
+.photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.initials {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 6px;
+}
+
+.role {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.notice {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 10px 16px;
+  margin: 0 0 28px;
+  border-radius: 0 6px 6px 0;
+  font-size: 15.5px;
+}
+
+/* ---------- Sections ---------- */
+section { margin-bottom: 40px; }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin: 0;
+}
+
+p { margin: 0 0 14px; }
+
+/* ---------- News ---------- */
+.news, .plain {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.news li {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 12px;
+  padding: 4px 0;
+}
+.date {
+  color: var(--muted);
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+.plain li { padding: 4px 0; }
+
+/* ---------- Publications ---------- */
+.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pubs li {
+  padding: 4px 0 18px;
+}
+.pubs li + li {
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+.venue {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 9px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.pubs .title {
+  font-family: var(--serif);
+  font-size: 18.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.pubs .authors {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+.me {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tldr {
+  font-size: 15px;
+  margin: 0;
+}
+.pub-links { margin: 6px 0 0; font-size: 14.5px; font-weight: 500; }
+.pub-links a { margin-right: 14px; }
+
+/* ---------- Experience ---------- */
+.entry { margin-bottom: 22px; }
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.when {
+  color: var(--muted);
+  font-size: 14.5px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.sub {
+  color: var(--muted);
+  font-size: 15px;
+  font-style: italic;
+  margin: 0 0 4px;
+}
+.entry ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+}
+.entry li {
+  font-size: 15.5px;
+  margin-bottom: 4px;
+}
+
+footer {
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .page { padding: 40px 20px 32px; }
+  .intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .photo { width: 104px; height: 104px; flex-basis: 104px; }
+  .initials { font-size: 36px; }
+  h1 { font-size: 34px; }
+  .news li { grid-template-columns: 1fr; gap: 0; }
+  .entry-head { flex-direction: column; gap: 0; }
+}
+
+/* ---------- Compact rows (experience, education) ---------- */
+.rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 5px 0;
+  font-size: 15.5px;
+}
+.more {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 15px;
+}
+@media (max-width: 600px) {
+  .rows li { flex-direction: column; gap: 0; padding: 6px 0; }
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: color .15s, border-color .15s;
+  z-index: 10;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle svg { width: 19px; height: 19px; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+body { transition: background-color .2s, color .2s; }
